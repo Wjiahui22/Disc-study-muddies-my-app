@@ -10,6 +10,25 @@ function Navbar() {
   </nav>
   )
 }
+
+function Card(props){
+  return(
+    <div class="card">
+      <div class="avatar">
+        <img src={props.avatar} alt="Avatar" />
+      </div>
+      <h3>{props.name}</h3>
+      <p>
+        CLASS & SUBJECT: {props.classasubject}<br />
+        MUSIC CHOICE: {props.musicchoice}<br />
+        LOCATION CHOICE: {props.locationchoice}
+      </p>
+      <button class="save-profile">Save profile</button><br />
+      <button class="connect-linkedin">Connect on LinkedIn</button>
+    </div>
+  )
+}
+
 function App() {
   return (
       <div>
@@ -29,58 +48,10 @@ function App() {
   </div>
 
   <div class="container">
-    <div class="card">
-      <div class="avatar">
-        <img src="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" alt="Avatar" />
-      </div>
-      <h3>NAME</h3>
-      <p>
-        CLASS & SUBJECT:<br />
-        MUSIC CHOICE:<br />
-        LOCATION CHOICE:
-      </p>
-      <button class="save-profile">Save profile</button><br />
-      <button class="connect-linkedin">Connect on LinkedIn</button>
-    </div>
-    <div class="card">
-      <div class="avatar">
-        <img src="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" alt="Avatar" />
-      </div>
-      <h3>NAME</h3>
-      <p>
-        CLASS & SUBJECT:<br />
-        MUSIC CHOICE:<br />
-        LOCATION CHOICE:
-      </p>
-      <button class="save-profile">Save profile</button><br />
-      <button class="connect-linkedin">Connect on LinkedIn</button>
-    </div>
-    <div class="card">
-      <div class="avatar">
-        <img src="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" alt="Avatar" />
-      </div>
-      <h3>NAME</h3>
-      <p>
-        CLASS & SUBJECT:<br />
-        MUSIC CHOICE:<br />
-        LOCATION CHOICE:
-      </p>
-      <button class="save-profile">Save profile</button><br />
-      <button class="connect-linkedin">Connect on LinkedIn</button>
-    </div>
-    <div class="card">
-      <div class="avatar">
-        <img src="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" alt="Avatar" />
-      </div>
-      <h3>NAME</h3>
-      <p>
-        CLASS & SUBJECT:<br />
-        MUSIC CHOICE:<br />
-        LOCATION CHOICE:
-      </p>
-      <button class="save-profile">Save profile</button><br />
-      <button class="connect-linkedin">Connect on LinkedIn</button>
-    </div>
+      <Card avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" name="Bob" classasubject="Chemistry" musicchoice="Lofi" locationchoice="Mudd Library"></Card>
+      <Card avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" name="Jane" classasubject="Chemistry" musicchoice="Classic" locationchoice="Main Library"></Card>
+      <Card avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" name="Ashley" classasubject="Chemistry" musicchoice="Pop" locationchoice="Tech"></Card>
+      <Card avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" name="John" classasubject="Chemistry" musicchoice="None" locationchoice="Willard"></Card>
   </div>
 
   <div class="footer">
