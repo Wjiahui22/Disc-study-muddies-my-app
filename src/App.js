@@ -1,5 +1,7 @@
 import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+
 function Navbar() {
   return(
     <nav>
@@ -12,8 +14,24 @@ function Navbar() {
 }
 
 function Card(props){
+  const [mode, setMode] = useState('nosaved');
+
+const switchMode = () => {
+  if (mode === 'nosaved') {
+    setMode('saved');
+  } else if (mode === 'saved'){
+    setMode('nosaved');
+  }
+};
+
+useEffect(() => {
+  console.log(mode);
+}, [mode]); 
+
+const backgroundColor = mode === 'nosaved' ? '#d9e6a5' : 'pink';
+
   return(
-    <div class="card">
+    <div class="card" style={{ backgroundColor }}>
       <div class="avatar">
         <img src={props.avatar} alt="Avatar" />
       </div>
@@ -23,8 +41,9 @@ function Card(props){
         MUSIC CHOICE: {props.musicchoice}<br />
         LOCATION CHOICE: {props.locationchoice}
       </p>
-      <button class="save-profile">Save profile</button><br />
-      <button class="connect-linkedin">Connect on LinkedIn</button>
+      <button className="save-profile" onClick={switchMode}>
+        {mode === 'nosaved' ? 'Save Profile' : 'Unsave Profile'}
+      </button>      <button class="connect-linkedin" >Connect on LinkedIn</button>
     </div>
   )
 }
