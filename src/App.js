@@ -1,15 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-      <div>
-  <nav>
+function Navbar() {
+  return(
+    <nav>
     <img src="https://i.postimg.cc/XYKS7S0m/logo-png.png" class="center" />
     <span>FIND UR NERD</span>
     <span>LOCK IN TRACKER</span>
     <span>Study Profile</span>
   </nav>
+  )
+}
+function App() {
+  return (
+      <div>
+  <Navbar />
 
   <div class="box">
     <h3>FILTER BY:</h3>
