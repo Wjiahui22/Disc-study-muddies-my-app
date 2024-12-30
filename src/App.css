@@ -1,38 +1,160 @@
-.App {
-  text-align: center;
+* {
+  font-family: Verdana;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: rgba(10, 33, 15);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+nav {
+  background-color: rgba(153, 170, 56);
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+nav img {
+  width: 100px;
+  height: auto;
+}
+
+nav span {
   color: white;
+  margin-right: 20px;
 }
 
-.App-link {
-  color: red;
+.box {
+  width: 400px;
+  padding: 45px;
+  margin: 20px 0;
+  background-color: rgb(173, 210, 237);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-row {
+  display: flex;
+  gap: 20px;
+}
+
+.class-subject {
+  background-color: rgba(19, 89, 29);
+  color: white;
+  border: white;
+}
+
+.music-choice {
+  background-color: rgba(153, 170, 56);
+  color: white;
+  border: white;
+}
+
+.location-choice {
+  background-color: rgba(225, 226, 137);
+  color: black;
+  border: white;
+}
+
+.keyword {
+  background-color: rgba(236, 236, 217);
+  color: black;
+  border: white;
+}
+
+.submit {
+  background-color: rgba(225, 226, 137);
+  color: black;
+  border: white;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #d9e6a5;
+  padding: 20px;
+  text-align: center;
+}
+
+.avatar img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.save-profile {
+  background-color: #1c682b;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.connect-linkedin {
+  background-color: #0077b5;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.footer {
+  width: 100%;
+  background-color: rgba(19, 89, 29);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.newsletter {
+  text-align: left;
+}
+
+.newsletter-actions {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.email {
+  background-color: rgba(236, 236, 217);
+  color: black;
+  border: white;
+}
+
+.subscribe {
+  background-color: rgba(225, 226, 137);
+  color: black;
+  border: white;
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.footer-about,
+.footer-follow {
+  text-align: right;
 }
