@@ -118,12 +118,61 @@ function FindUrNerdPage() {
   );
 }
 
+function UserCard({ avatar, firstname, lastname, email, bio, major, graduationYear }) {
+  return (
+    <div className="card">
+      <div className="avatar">
+        <img src={avatar} alt="User Avatar" />
+      </div>
+      <h3>
+        {firstname} {lastname}
+      </h3>
+      <p><strong>Email: </strong>{email}</p>
+      <p><strong>Bio:</strong> {bio || "Not provided"}</p>
+      <p><strong>Major:</strong> {major}</p>
+      <p><strong>Graduation Year:</strong> {graduationYear || "Not provided"}</p>
+    </div>
+  );
+}
+
 function ProfilePage() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    let ignore = false;
+
+    fetch("https://disc-assignment-5-users-api.onrender.com/api/users")
+      .then((response) => response.json())
+      .then((data) => {
+        if (!ignore) {
+          setUsers(data); // Use the API response directly
+        }
+      })
+      .catch((error) => console.error("Error fetching users:", error));
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   return (
     <div>
       <Navbar />
-      <h1>Study Profile</h1>
-      <p>This is the Study Profile page.</p>
+      <h1 style={{ color: "white" }}>User List</h1>
+      <br />      <div className="container">
+        {users.map((user) => (
+          <UserCard
+          key={user.id}
+          avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" // Replace with actual avatar URL
+          firstname={user.firstname}
+          lastname={user.lastname}
+          email={user.email}
+          bio={user.bio}
+          major={user.major}
+          graduationYear={user.graduationyear}
+          />
+        ))}
+      </div>
     </div>
   );
 }
