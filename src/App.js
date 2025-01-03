@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 function Navbar() {
   return(
     <nav>
     <img src="https://i.postimg.cc/XYKS7S0m/logo-png.png" class="center" />
-    <span>FIND UR NERD</span>
+    <Link to="/">FIND UR NERD</Link>
     <span>LOCK IN TRACKER</span>
-    <span>Study Profile</span>
+    <Link to="/profile">Study Profile</Link>
   </nav>
   )
 }
@@ -48,7 +49,7 @@ const backgroundColor = mode === 'nosaved' ? '#d9e6a5' : 'pink';
   )
 }
 
-function App() {
+function FindUrNerdPage() {
   return (
       <div>
   <Navbar />
@@ -114,6 +115,27 @@ function App() {
     </div>
   </div>
 </div>
+  );
+}
+
+function ProfilePage() {
+  return (
+    <div>
+      <Navbar />
+      <h1>Study Profile</h1>
+      <p>This is the Study Profile page.</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<FindUrNerdPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </Router>
   );
 }
 
