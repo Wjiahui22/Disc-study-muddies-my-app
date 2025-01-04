@@ -1,29 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-function ApiFetchUsers(){
-const [users, setUsers] = useState([]);
-
-  const addUser = (newUser) => {
-    setUsers((prevUsers) => [...prevUsers, newUser]); // Add to the end of the array
-  };
+function ApiFetchUsers() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    let ignore = false;
-
-    fetch("https://disc-assignment-5-users-api.onrender.com/api/users")
+    fetch('http://localhost:3005/api/users')
       .then((response) => response.json())
       .then((data) => {
-        if (!ignore) {
-          setUsers(data); // Use the API response directly
-        }
+        setUsers(data);
+        setLoading(false);
       })
-      .catch((error) => console.error("Error fetching users:", error));
-
-    return () => {
-      ignore = true;
-    };
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
   }, []);
-  return [users, addUser]
+
+  return [users, loading, error];
 }
 
 export default ApiFetchUsers;
+
+
+

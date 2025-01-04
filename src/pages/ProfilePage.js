@@ -6,29 +6,47 @@ import addUser from '../hooks/addUser';
 import UserCard from '../components/UserCard';
 
 function ProfilePage() {
-  const [users, setUsers] = ApiFetchUsers();
+  const [users, loading, error] = ApiFetchUsers();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div>
       <Navbar />
-      <h1 style={{ color: "white" }}>User List <br />
-      <button class="save-profile" onClick={() => addUser({ id: 5, firstname: "New", lastname: "User", email: "new@user.com", bio: "", major: "Physics", graduationYear: 2026 })}>
+      <h1 style={{ color: "white" }}>User List</h1>
+      <button
+        className="save-profile"
+        onClick={() => addUser({
+          id: 5,
+          firstname: "New",
+          lastname: "User",
+          email: "new@user.com",
+          bio: "",
+          major: "Physics",
+          graduationYear: 2026
+        })}
+      >
         Add User
-      </button>   
-      </h1>
+      </button>
       <br />  
 
       <div className="container">
         {users.map((user) => (
           <UserCard
-          key={user.id}
-          avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" // Replace with actual avatar URL
-          firstname={user.firstname}
-          lastname={user.lastname}
-          email={user.email}
-          bio={user.bio}
-          major={user.major}
-          graduationYear={user.graduationyear}
+            key={user.id}
+            avatar="https://i.postimg.cc/QNPj5JDp/39413-1000.jpg" // Replace with actual avatar URL
+            firstname={user.first_name}
+            lastname={user.last_name}
+            email={user.email}
+            bio={user.bio}
+            major={user.major}
+            graduationYear={user.graduationYear}
           />
         ))}
       </div>
@@ -38,3 +56,4 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
+
