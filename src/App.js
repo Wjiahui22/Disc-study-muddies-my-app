@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
@@ -17,13 +17,9 @@ function Navbar() {
 function Card(props){
   const [mode, setMode] = useState('nosaved');
 
-const switchMode = () => {
-  if (mode === 'nosaved') {
-    setMode('saved');
-  } else if (mode === 'saved'){
-    setMode('nosaved');
-  }
-};
+  const switchMode = useCallback(() => {
+    setMode((prevMode) => (prevMode === 'nosaved' ? 'saved' : 'nosaved'));
+  }, []);
 
 useEffect(() => {
   console.log(mode);
@@ -44,7 +40,9 @@ const backgroundColor = mode === 'nosaved' ? '#d9e6a5' : 'pink';
       </p>
       <button className="save-profile" onClick={switchMode}>
         {mode === 'nosaved' ? 'Save Profile' : 'Unsave Profile'}
-      </button>      <button class="connect-linkedin" >Connect on LinkedIn</button>
+      </button>      
+      <button class="connect-linkedin" >Connect on LinkedIn
+      </button>
     </div>
   )
 }
@@ -138,6 +136,10 @@ function UserCard({ avatar, firstname, lastname, email, bio, major, graduationYe
 function ProfilePage() {
   const [users, setUsers] = useState([]);
 
+  const addUser = (newUser) => {
+    setUsers((prevUsers) => [...prevUsers, newUser]); // Add to the end of the array
+  };
+
   useEffect(() => {
     let ignore = false;
 
@@ -158,8 +160,14 @@ function ProfilePage() {
   return (
     <div>
       <Navbar />
-      <h1 style={{ color: "white" }}>User List</h1>
-      <br />      <div className="container">
+      <h1 style={{ color: "white" }}>User List <br />
+      <button class="save-profile" onClick={() => addUser({ id: 5, firstname: "New", lastname: "User", email: "new@user.com", bio: "", major: "Physics", graduationYear: 2026 })}>
+        Add User
+      </button>   
+      </h1>
+      <br />  
+
+      <div className="container">
         {users.map((user) => (
           <UserCard
           key={user.id}
@@ -173,6 +181,49 @@ function ProfilePage() {
           />
         ))}
       </div>
+
+
+      <div class="footer">
+    <div class="newsletter">
+      <h2>NEWSLETTER</h2>
+      <p>
+        Want to know what we’re up to? Sign up for the newsletter and join study
+        muddies.
+      </p>
+      <div class="newsletter-actions">
+        <button class="email">Email</button>
+        <button class="subscribe">Subscribe</button>
+      </div>
+    </div>
+
+    <div class="footer-sections">
+      <div class="footer-about">
+        <h3>About</h3>
+        <div>
+          History <br />
+          Schedule
+        </div>
+        <h3>Our Team</h3>
+        <div>
+          Community <br />
+          Affiliate Programs
+        </div>
+      </div>
+      <div class="footer-follow">
+        <h3>Follow Us</h3>
+        <div>
+          Instagram <br />
+          LinkedIn
+        </div>
+        <h3>Contact</h3>
+        <div>
+          T:(847) 491-3741 <br />
+          E:NU@u.northwestern.edu
+        </div>
+      </div>
+    </div>
+  </div>
+
     </div>
   );
 }
