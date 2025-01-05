@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import FindUrNerdPage from "./pages/FindUrNerdPage";
 import ProfilePage from "./pages/ProfilePage";
 import "./App.css";
+import './index.css';
+
 
 function App() {
   return (
